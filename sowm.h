@@ -1,5 +1,7 @@
 #include <X11/Xlib.h>
 
+#define NUM_WS 10
+
 #define win        (client *t=0, *c=list; c && t!=list->prev; t=c, c=c->next)
 #define ws_save(W) ws_list[W] = list
 #define ws_sel(W)  list = ws_list[ws = W]
@@ -52,7 +54,9 @@ void win_focus(client *c);
 void win_kill(const Arg arg);
 void win_prev(const Arg arg);
 void win_next(const Arg arg);
+void win_init(void);
 void win_to_ws(const Arg arg);
 void ws_go(const Arg arg);
+bool exists_win(Window w);
 
 static int xerror() { return 0; }

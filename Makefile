@@ -1,9 +1,9 @@
 CFLAGS += -std=c99 -Wall -Wextra -pedantic -Wold-style-declaration
 CFLAGS += -Wmissing-prototypes -Wno-unused-parameter
-PREFIX ?= /usr
+PREFIX ?= /usr/local
 BINDIR ?= $(PREFIX)/bin
-CC     ?= gcc
-
+CC     ?= cc
+LDFLAGS= -I/usr/X11R6/include -L/usr/X11R6/lib
 all: sowm
 
 config.h:
@@ -19,6 +19,6 @@ uninstall:
 	rm -f $(DESTDIR)$(BINDIR)/sowm
 
 clean:
-	rm -f sowm *.o
+	rm -f config.h sowm *.o
 
 .PHONY: all install uninstall clean
